@@ -23,8 +23,8 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
   };
 
   return (
-    <Card className="overflow-hidden border-white/10 bg-white/5 backdrop-blur-md text-slate-100 flex flex-col h-full shadow-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-pink-500/20 hover:border-pink-500/30">
-      <div className="relative aspect-[2/3] w-full bg-slate-900/50">
+    <Card className="overflow-hidden border-slate-200 bg-white text-slate-900 flex flex-col h-full shadow-sm transition-all duration-300 hover:shadow-md">
+      <div className="relative aspect-[2/3] w-full bg-slate-100">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={movie.posterUrl || "https://via.placeholder.com/500x750?text=No+Poster"}
@@ -34,10 +34,10 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
             e.target.src = "https://via.placeholder.com/500x750?text=Image+Not+Found";
           }}
         />
-        <div className="absolute top-3 right-3 shadow-xl">
+        <div className="absolute top-2 right-2">
           <Badge
             variant={movie.status === "Completed" ? "default" : "secondary"}
-            className={`cursor-pointer px-3 py-1 font-semibold backdrop-blur-md border-0 transition-transform hover:scale-105 ${movie.status === "Completed" ? "bg-gradient-to-r from-emerald-400 to-emerald-600 text-white shadow-emerald-500/30" : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-cyan-500/30"}`}
+            className={`cursor-pointer px-2 py-0.5 text-[10px] font-medium border-0 transition-transform hover:scale-105 shadow-sm ${movie.status === "Completed" ? "bg-slate-900 text-white hover:bg-slate-800" : "bg-slate-200 text-slate-700 hover:bg-slate-300"}`}
             onClick={handleStatusToggle}
             title="Click to toggle status"
           >
@@ -46,16 +46,16 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
         </div>
       </div>
       <CardContent className="p-4 flex flex-col flex-grow">
-        <h3 className="font-bold text-lg line-clamp-1 mb-1">{movie.title}</h3>
-        <p className="text-sm text-slate-400 mb-3">{movie.genre}</p>
+        <h3 className="font-bold text-sm line-clamp-1 mb-1">{movie.title}</h3>
+        <p className="text-xs text-slate-500 mb-4">{movie.genre}</p>
         
         <div className="mt-auto flex items-center justify-between">
           <div className="flex items-center gap-1">
             {[1, 2, 3, 4, 5].map((star) => (
               <Star
                 key={star}
-                className={`w-5 h-5 cursor-pointer transition-colors ${
-                  star <= movie.rating ? "fill-yellow-500 text-yellow-500" : "text-slate-600 hover:text-yellow-500"
+                className={`w-4 h-4 cursor-pointer transition-colors ${
+                  star <= movie.rating ? "fill-slate-900 text-slate-900" : "text-slate-300 hover:text-slate-500"
                 }`}
                 onClick={() => handleRatingChange(star)}
               />
@@ -64,10 +64,10 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
           <button
             onClick={handleDelete}
             disabled={isDeleting}
-            className="p-2 text-slate-400 hover:text-red-500 hover:bg-slate-700 rounded-full transition-colors disabled:opacity-50"
+            className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors disabled:opacity-50"
             title="Delete Movie"
           >
-            <Trash2 className="w-5 h-5" />
+            <Trash2 className="w-4 h-4" />
           </button>
         </div>
       </CardContent>

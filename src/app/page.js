@@ -87,14 +87,14 @@ export default function Home() {
   );
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div className="relative w-full sm:max-w-md shadow-lg shadow-black/20 rounded-full">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pink-400 w-5 h-5" />
+        <div className="relative w-full sm:max-w-sm">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
           <Input
             type="text"
             placeholder="Search movies by title..."
-            className="pl-12 py-6 rounded-full bg-white/5 backdrop-blur-md border-white/10 text-white placeholder:text-slate-400 focus-visible:ring-pink-500 text-lg shadow-inner"
+            className="pl-9 py-2 bg-white border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-slate-900 text-sm shadow-sm"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -103,8 +103,8 @@ export default function Home() {
       </div>
 
       {loading ? (
-        <div className="text-center py-20">
-          <p className="text-pink-400 text-xl font-medium animate-pulse">Loading your watchlist...</p>
+        <div className="text-center py-16">
+          <p className="text-slate-500 text-sm font-medium animate-pulse">Loading your watchlist...</p>
         </div>
       ) : filteredMovies.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -118,12 +118,12 @@ export default function Home() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-24 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl">
-          <div className="bg-white/5 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/10">
-             <Search className="w-10 h-10 text-pink-400 opacity-80" />
+        <div className="text-center py-20 bg-white rounded-2xl border border-slate-200 shadow-sm">
+          <div className="bg-slate-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100">
+             <Search className="w-6 h-6 text-slate-400" />
           </div>
-          <p className="text-white text-2xl font-bold mb-2">No movies found</p>
-          <p className="text-slate-400 text-lg">Try adjusting your search or add a new movie to your collection.</p>
+          <p className="text-slate-900 text-lg font-bold mb-1">No movies found</p>
+          <p className="text-slate-500 text-sm">Try adjusting your search or add a new movie to your collection.</p>
         </div>
       )}
     </div>

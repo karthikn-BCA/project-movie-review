@@ -9,9 +9,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
-        className="font-sans antialiased bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 text-slate-50 min-h-screen flex flex-col selection:bg-pink-500/30"
+        className="font-sans antialiased bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-slate-200"
       >
         <Navbar />
         <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
