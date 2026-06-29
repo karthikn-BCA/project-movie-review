@@ -69,17 +69,15 @@ export default function MovieModal({ onAddMovie, onUpdateMovie, movie, isEditMod
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        {isEditMode ? (
-          <div role="button" className="flex-1 bg-[#9F915A] hover:opacity-90 text-white font-medium py-1 px-2 rounded text-xs transition-colors shadow-sm flex items-center justify-center gap-1 cursor-pointer">
-            <Edit2 className="w-3 h-3 text-white" /> Edit
-          </div>
-        ) : (
-          <div role="button" className="flex items-center gap-2 bg-[#9F915A] hover:opacity-90 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-all active:scale-95 cursor-pointer">
-            <Plus className="w-4 h-4 text-white" /> Add Movie
-          </div>
-        )}
-      </DialogTrigger>
+      {isEditMode ? (
+        <DialogTrigger className="flex-1 bg-[#9F915A] hover:opacity-90 text-white font-medium py-1 px-2 rounded text-xs transition-colors shadow-sm flex items-center justify-center gap-1 cursor-pointer">
+          <Edit2 className="w-3 h-3 text-white" /> Edit
+        </DialogTrigger>
+      ) : (
+        <DialogTrigger className="flex items-center gap-2 bg-[#9F915A] hover:opacity-90 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-all active:scale-95 cursor-pointer">
+          <Plus className="w-4 h-4 text-white" /> Add Movie
+        </DialogTrigger>
+      )}
       <DialogContent className="sm:max-w-[425px] bg-[#243E36] text-white border-none shadow-2xl">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-white">
