@@ -50,79 +50,79 @@ export default function MovieModal({ onAddMovie }) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="flex items-center gap-2 bg-[#EAF0CE] hover:opacity-90 text-slate-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-all active:scale-95">
+      <DialogTrigger className="flex items-center gap-2 bg-[#9F915A] hover:opacity-90 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-all active:scale-95">
         <Plus className="w-4 h-4" />
         Add Movie
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-[#D9F7FA] text-slate-900 border-none shadow-2xl">
+      <DialogContent className="sm:max-w-[425px] bg-[#243E36] text-white border-none shadow-2xl">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-slate-900">Add New Movie</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-white">Add New Movie</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="title" className="text-sm font-semibold text-slate-800">Title *</label>
+            <label htmlFor="title" className="text-sm font-semibold text-white">Title *</label>
             <Input
               id="title"
               name="title"
               placeholder="e.g. Inception"
               value={formData.title}
               onChange={handleChange}
-              className="bg-white/60 border-slate-300 text-slate-900 placeholder:text-slate-500 focus-visible:ring-slate-900 text-sm"
+              className="bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#9F915A] text-sm"
               required
             />
           </div>
           
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="genre" className="text-sm font-semibold text-slate-800">Genre *</label>
+            <label htmlFor="genre" className="text-sm font-semibold text-white">Genre *</label>
             <Input
               id="genre"
               name="genre"
               placeholder="e.g. Sci-Fi, Action"
               value={formData.genre}
               onChange={handleChange}
-              className="bg-white/60 border-slate-300 text-slate-900 placeholder:text-slate-500 focus-visible:ring-slate-900 text-sm"
+              className="bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#9F915A] text-sm"
               required
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="posterUrl" className="text-sm font-semibold text-slate-800">Poster URL</label>
+            <label htmlFor="posterUrl" className="text-sm font-semibold text-white">Poster URL</label>
             <Input
               id="posterUrl"
               name="posterUrl"
               placeholder="https://..."
               value={formData.posterUrl}
               onChange={handleChange}
-              className="bg-white/60 border-slate-300 text-slate-900 placeholder:text-slate-500 focus-visible:ring-slate-900 text-sm"
+              className="bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#9F915A] text-sm"
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-semibold text-slate-800">Status</label>
+            <label className="text-sm font-semibold text-white">Status</label>
             <Select value={formData.status} onValueChange={(val) => handleSelectChange("status", val)}>
-              <SelectTrigger className="bg-white/60 border-slate-300 text-slate-900 focus:ring-slate-900 text-sm">
+              <SelectTrigger className="bg-[#E0EEC6] border-none text-slate-900 focus:ring-[#9F915A] text-sm">
                 <SelectValue placeholder="Select status" />
               </SelectTrigger>
-              <SelectContent className="bg-[#D9F7FA] border-slate-300 text-slate-900">
-                <SelectItem value="Watching" className="focus:bg-white/60 cursor-pointer">Watching</SelectItem>
-                <SelectItem value="Completed" className="focus:bg-white/60 cursor-pointer">Completed</SelectItem>
+              <SelectContent className="bg-[#243E36] border-white/20 text-white">
+                <SelectItem value="Watching" className="focus:bg-white/20 cursor-pointer">Watching</SelectItem>
+                <SelectItem value="Completed" className="focus:bg-white/20 cursor-pointer">Completed</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-semibold text-slate-800">Rating (0-5)</label>
+            <label className="text-sm font-semibold text-white">Rating (0-5)</label>
             <Select value={formData.rating} onValueChange={(val) => handleSelectChange("rating", val)}>
-              <SelectTrigger className="bg-white/60 border-slate-300 text-slate-900 focus:ring-slate-900 text-sm">
+              <SelectTrigger className="bg-[#E0EEC6] border-none text-slate-900 focus:ring-[#9F915A] text-sm">
                 <SelectValue placeholder="Select rating" />
               </SelectTrigger>
-              <SelectContent className="bg-[#D9F7FA] border-slate-300 text-slate-900">
-                <SelectItem value="0" className="focus:bg-white/60 cursor-pointer">0 Stars (Unrated)</SelectItem>
-                <SelectItem value="1" className="focus:bg-white/60 cursor-pointer">1 Star</SelectItem>
-                <SelectItem value="2" className="focus:bg-white/60 cursor-pointer">2 Stars</SelectItem>
-                <SelectItem value="3" className="focus:bg-white/60 cursor-pointer">3 Stars</SelectItem>
-                <SelectItem value="4" className="focus:bg-white/60 cursor-pointer">4 Stars</SelectItem>
-                <SelectItem value="5" className="focus:bg-white/60 cursor-pointer">5 Stars</SelectItem>
+              <SelectContent className="bg-[#243E36] border-white/20 text-white">
+                <SelectItem value="0" className="focus:bg-white/20 cursor-pointer">0 Stars (Unrated)</SelectItem>
+                <SelectItem value="1" className="focus:bg-white/20 cursor-pointer">1 Star</SelectItem>
+                <SelectItem value="2" className="focus:bg-white/20 cursor-pointer">2 Stars</SelectItem>
+                <SelectItem value="3" className="focus:bg-white/20 cursor-pointer">3 Stars</SelectItem>
+                <SelectItem value="4" className="focus:bg-white/20 cursor-pointer">4 Stars</SelectItem>
+                <SelectItem value="5" className="focus:bg-white/20 cursor-pointer">5 Stars</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -130,7 +130,7 @@ export default function MovieModal({ onAddMovie }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-4 bg-[#EAF0CE] hover:opacity-90 text-slate-800 font-bold py-2.5 px-4 rounded-xl text-sm disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
+            className="w-full mt-4 bg-[#9F915A] hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-xl text-sm disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
           >
             {loading ? "Adding..." : "Save Movie"}
           </button>

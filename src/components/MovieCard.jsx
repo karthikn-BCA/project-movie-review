@@ -23,8 +23,8 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
   };
 
   return (
-    <Card className="overflow-hidden bg-[#BCAB79] border-none text-slate-900 flex flex-row h-40 shadow-sm transition-all duration-300 hover:shadow-md">
-      <div className="relative w-28 shrink-0 bg-white/20 h-full">
+    <Card className="overflow-hidden bg-[#E0EEC6] border-none text-slate-900 flex flex-row h-40 shadow-sm transition-all duration-300 hover:shadow-md">
+      <div className="relative w-28 shrink-0 bg-white/40 h-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={movie.posterUrl || "https://via.placeholder.com/200x300?text=No+Poster"}
@@ -37,7 +37,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
         <div className="absolute top-1 left-1">
           <Badge
             variant={movie.status === "Completed" ? "default" : "secondary"}
-            className={`cursor-pointer px-1.5 py-0.5 text-[9px] font-medium border-0 shadow-sm transition-transform hover:scale-105 ${movie.status === "Completed" ? "bg-[#EAF0CE] text-slate-800" : "bg-white/80 text-slate-800"}`}
+            className={`cursor-pointer px-1.5 py-0.5 text-[9px] font-medium border-0 shadow-sm transition-transform hover:scale-105 ${movie.status === "Completed" ? "bg-[#9F915A] text-white" : "bg-white/80 text-slate-800"}`}
             onClick={handleStatusToggle}
             title="Click to toggle status"
           >
@@ -54,7 +54,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
             <Star
               key={star}
               className={`w-3.5 h-3.5 cursor-pointer transition-colors ${
-                star <= movie.rating ? "fill-[#ABA194] text-[#ABA194]" : "text-slate-800/20 hover:text-[#ABA194]/50"
+                star <= movie.rating ? "fill-[#9F915A] text-[#9F915A]" : "text-slate-800/20 hover:text-[#9F915A]/50"
               }`}
               onClick={() => handleRatingChange(star)}
             />
@@ -64,14 +64,14 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
         <div className="flex gap-2 mt-2 pt-2 border-t border-slate-800/10">
           <button
             onClick={() => onUpdate(movie.id)}
-            className="flex-1 bg-[#EAF0CE] hover:opacity-90 text-slate-800 font-medium py-1 px-2 rounded text-xs transition-colors shadow-sm"
+            className="flex-1 bg-[#9F915A] hover:opacity-90 text-white font-medium py-1 px-2 rounded text-xs transition-colors shadow-sm"
           >
             Edit
           </button>
           <button
             onClick={handleDelete}
             disabled={isDeleting}
-            className="p-1 text-slate-800/50 hover:text-[#ABA194] hover:bg-white/30 rounded transition-colors disabled:opacity-50"
+            className="p-1 text-slate-800/50 hover:text-[#9F915A] hover:bg-white/50 rounded transition-colors disabled:opacity-50"
             title="Delete Movie"
           >
             <Trash2 className="w-4 h-4" />

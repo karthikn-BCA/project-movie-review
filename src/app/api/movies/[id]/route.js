@@ -1,15 +1,16 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-export async function PATCH(request, { params }) {
+export async function PATCH(request, props) {
   try {
+    const params = await props.params;
     const { id } = params;
     const body = await request.json();
     
     // Only update provided fields (status or rating)
     const updateData = {};
     if (body.status) updateData.status = body.status;
-    if (body.rating) updateData.rating = parseInt(body.rating);
+    if (body.rating !== undefined) updateData.rating = parseInt(body.rating);
 
     const updatedMovie = await prisma.movie.update({
       where: { id },
@@ -22,8 +23,9 @@ export async function PATCH(request, { params }) {
   }
 }
 
-export async function DELETE(request, { params }) {
+export async function DELETE(request, props) {
   try {
+    const params = await props.params;
     const { id } = params;
     
     await prisma.movie.delete({
