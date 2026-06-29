@@ -25,6 +25,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
   return (
     <Card className="overflow-hidden border-slate-700 bg-slate-800 text-slate-100 flex flex-col h-full shadow-lg transition-transform hover:scale-[1.02]">
       <div className="relative aspect-[2/3] w-full bg-slate-900">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={movie.posterUrl || "https://via.placeholder.com/500x750?text=No+Poster"}
           alt={movie.title}
