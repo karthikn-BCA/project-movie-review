@@ -23,8 +23,8 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
   };
 
   return (
-    <Card className="overflow-hidden border-slate-700 bg-slate-800 text-slate-100 flex flex-col h-full shadow-lg transition-transform hover:scale-[1.02]">
-      <div className="relative aspect-[2/3] w-full bg-slate-900">
+    <Card className="overflow-hidden border-white/10 bg-white/5 backdrop-blur-md text-slate-100 flex flex-col h-full shadow-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-pink-500/20 hover:border-pink-500/30">
+      <div className="relative aspect-[2/3] w-full bg-slate-900/50">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={movie.posterUrl || "https://via.placeholder.com/500x750?text=No+Poster"}
@@ -34,10 +34,10 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
             e.target.src = "https://via.placeholder.com/500x750?text=Image+Not+Found";
           }}
         />
-        <div className="absolute top-2 right-2">
+        <div className="absolute top-3 right-3 shadow-xl">
           <Badge
             variant={movie.status === "Completed" ? "default" : "secondary"}
-            className={`cursor-pointer ${movie.status === "Completed" ? "bg-green-600 hover:bg-green-700" : "bg-blue-600 hover:bg-blue-700 text-white"}`}
+            className={`cursor-pointer px-3 py-1 font-semibold backdrop-blur-md border-0 transition-transform hover:scale-105 ${movie.status === "Completed" ? "bg-gradient-to-r from-emerald-400 to-emerald-600 text-white shadow-emerald-500/30" : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-cyan-500/30"}`}
             onClick={handleStatusToggle}
             title="Click to toggle status"
           >
