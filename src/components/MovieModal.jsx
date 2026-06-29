@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button"; // Standard shadcn button or native button if not installed
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus } from "lucide-react";
+import { Plus, Edit2 } from "lucide-react";
 
-export default function MovieModal({ onAddMovie }) {
+export default function MovieModal({ onAddMovie, onUpdateMovie, movie, isEditMode = false }) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   
@@ -16,6 +15,28 @@ export default function MovieModal({ onAddMovie }) {
     status: "Watching",
     rating: "0",
   });
+
+  useEffect(() => {
+    if (open) {
+      if (isEditMode && movie) {
+        setFormData({
+          title: movie.title,
+          genre: movie.genre,
+          posterUrl: movie.posterUrl || "",
+          status: movie.status,
+          rating: movie.rating.toString(),
+        });
+      } else {
+        setFormData({
+          title: "",
+          genre: "",
+          posterUrl: "",
+          status: "Watching",
+          rating: "0",
+        });
+      }
+    }
+  }, [open, isEditMode, movie]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,32 +52,39 @@ export default function MovieModal({ onAddMovie }) {
     if (!formData.title || !formData.genre) return;
     
     setLoading(true);
-    await onAddMovie({
-      ...formData,
-      rating: parseInt(formData.rating) || 0,
-    });
+    if (isEditMode) {
+      await onUpdateMovie(movie.id, {
+        ...formData,
+        rating: parseInt(formData.rating) || 0,
+      });
+    } else {
+      await onAddMovie({
+        ...formData,
+        rating: parseInt(formData.rating) || 0,
+      });
+    }
     setLoading(false);
     setOpen(false);
-    
-    // Reset form
-    setFormData({
-      title: "",
-      genre: "",
-      posterUrl: "",
-      status: "Watching",
-      rating: "0",
-    });
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="flex items-center gap-2 bg-[#9F915A] hover:opacity-90 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-all active:scale-95">
-        <Plus className="w-4 h-4" />
-        Add Movie
+      <DialogTrigger asChild>
+        {isEditMode ? (
+          <button className="flex-1 bg-[#9F915A] hover:opacity-90 text-white font-medium py-1 px-2 rounded text-xs transition-colors shadow-sm flex items-center justify-center gap-1">
+            <Edit2 className="w-3 h-3" /> Edit
+          </button>
+        ) : (
+          <button className="flex items-center gap-2 bg-[#9F915A] hover:opacity-90 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-all active:scale-95">
+            <Plus className="w-4 h-4" /> Add Movie
+          </button>
+        )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-[#243E36] text-white border-none shadow-2xl">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-white">Add New Movie</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-white">
+            {isEditMode ? "Edit Movie" : "Add New Movie"}
+          </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
           <div className="flex flex-col gap-1.5">
@@ -132,7 +160,7 @@ export default function MovieModal({ onAddMovie }) {
             disabled={loading}
             className="w-full mt-4 bg-[#9F915A] hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-xl text-sm disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
           >
-            {loading ? "Adding..." : "Save Movie"}
+            {loading ? "Saving..." : (isEditMode ? "Save Changes" : "Save Movie")}
           </button>
         </form>
       </DialogContent>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Star, Trash2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import MovieModal from "./MovieModal"; // Import MovieModal for Edit mode
 
 export default function MovieCard({ movie, onUpdate, onDelete }) {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -23,7 +24,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
   };
 
   return (
-    <Card className="overflow-hidden bg-[#E0EEC6] border-none text-slate-900 flex flex-row h-40 shadow-sm transition-all duration-300 hover:shadow-md">
+    <Card className="overflow-hidden bg-[#E0EEC6] border-none text-slate-900 flex flex-row h-40 shadow-sm transition-all duration-300 hover:shadow-md relative">
       <div className="relative w-28 shrink-0 bg-white/40 h-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -39,14 +40,13 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
             variant={movie.status === "Completed" ? "default" : "secondary"}
             className={`cursor-pointer px-1.5 py-0.5 text-[9px] font-medium border-0 shadow-sm transition-transform hover:scale-105 ${movie.status === "Completed" ? "bg-[#9F915A] text-white" : "bg-white/80 text-slate-800"}`}
             onClick={handleStatusToggle}
-            title="Click to toggle status"
           >
             {movie.status}
           </Badge>
         </div>
       </div>
       <CardContent className="p-3 flex flex-col flex-grow min-w-0">
-        <h3 className="font-bold text-sm line-clamp-1 mb-0.5" title={movie.title}>{movie.title}</h3>
+        <h3 className="font-bold text-sm line-clamp-1 mb-0.5">{movie.title}</h3>
         <p className="text-xs text-slate-800/80 mb-2 truncate">{movie.genre}</p>
         
         <div className="flex items-center gap-1 mb-auto">
@@ -62,17 +62,15 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
         </div>
         
         <div className="flex gap-2 mt-2 pt-2 border-t border-slate-800/10">
-          <button
-            onClick={() => onUpdate(movie.id)}
-            className="flex-1 bg-[#9F915A] hover:opacity-90 text-white font-medium py-1 px-2 rounded text-xs transition-colors shadow-sm"
-          >
-            Edit
-          </button>
+          <MovieModal 
+             isEditMode={true} 
+             movie={movie} 
+             onUpdateMovie={onUpdate} 
+          />
           <button
             onClick={handleDelete}
             disabled={isDeleting}
             className="p-1 text-slate-800/50 hover:text-[#9F915A] hover:bg-white/50 rounded transition-colors disabled:opacity-50"
-            title="Delete Movie"
           >
             <Trash2 className="w-4 h-4" />
           </button>
