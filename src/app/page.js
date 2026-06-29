@@ -104,7 +104,7 @@ export default function Home() {
 
       {loading ? (
         <div className="text-center py-16">
-          <p className="text-slate-500 dark:text-slate-400 text-sm font-medium animate-pulse">Loading your watchlist...</p>
+          <p className="text-white/80 text-sm font-medium animate-pulse">Loading your watchlist...</p>
         </div>
       ) : filteredMovies.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -118,12 +118,12 @@ export default function Home() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 bg-white dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
-          <div className="bg-slate-50 dark:bg-slate-800/50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100 dark:border-slate-700 transition-colors">
-             <Search className="w-6 h-6 text-slate-400 dark:text-slate-500" />
+        <div className="text-center py-20 bg-[#73BFB8] rounded-2xl shadow-lg border border-[#73BFB8]/50">
+          <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30">
+             <Search className="w-6 h-6 text-white" />
           </div>
-          <p className="text-slate-900 dark:text-slate-100 text-lg font-bold mb-1">No movies found</p>
-          <p className="text-slate-500 dark:text-slate-400 text-sm">Try adjusting your search or add a new movie to your collection.</p>
+          <p className="text-white text-lg font-bold mb-1">No movies found</p>
+          <p className="text-white/80 text-sm">Try adjusting your search or add a new movie to your collection.</p>
         </div>
       )}
     </div>
