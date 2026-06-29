@@ -29,7 +29,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={movie.posterUrl || "https://via.placeholder.com/200x300?text=No+Poster"}
-          alt={movie.title}
+          alt="Movie Poster"
           className="object-cover w-full h-full"
           onError={(e) => {
             e.target.src = "https://via.placeholder.com/200x300?text=Not+Found";

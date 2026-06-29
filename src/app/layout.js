@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className="font-sans antialiased bg-[#F1F7ED] text-slate-900 min-h-screen flex flex-col transition-colors"
+        className="font-sans antialiased bg-[#F1F7ED] dark:bg-black text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors"
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
