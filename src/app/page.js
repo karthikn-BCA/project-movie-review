@@ -15,7 +15,7 @@ export default function Home() {
   const fetchMovies = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/movies");
+      const res = await fetch("/api/movies", { cache: "no-store" });
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
       setMovies(data);
@@ -90,11 +90,11 @@ export default function Home() {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="relative w-full sm:max-w-sm">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-slate-500 w-4 h-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 w-4 h-4" />
           <Input
             type="text"
             placeholder="Search movies by title..."
-            className="pl-9 py-2 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-400 text-sm shadow-sm transition-colors"
+            className="pl-9 py-2 bg-[#D8DDDE] border-slate-300 text-slate-900 placeholder:text-slate-500 focus-visible:ring-slate-900 text-sm shadow-sm transition-colors"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -104,7 +104,7 @@ export default function Home() {
 
       {loading ? (
         <div className="text-center py-16">
-          <p className="text-white/80 text-sm font-medium animate-pulse">Loading your watchlist...</p>
+          <p className="text-slate-700 text-sm font-medium animate-pulse">Loading your watchlist...</p>
         </div>
       ) : filteredMovies.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -118,12 +118,12 @@ export default function Home() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 bg-[#73BFB8] rounded-2xl shadow-lg border border-[#73BFB8]/50">
-          <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30">
-             <Search className="w-6 h-6 text-white" />
+        <div className="text-center py-20 bg-[#D9F7FA] rounded-2xl shadow-lg border border-[#D9F7FA]/50">
+          <div className="bg-white/40 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/50">
+             <Search className="w-6 h-6 text-slate-700" />
           </div>
-          <p className="text-white text-lg font-bold mb-1">No movies found</p>
-          <p className="text-white/80 text-sm">Try adjusting your search or add a new movie to your collection.</p>
+          <p className="text-slate-900 text-lg font-bold mb-1">No movies found</p>
+          <p className="text-slate-700 text-sm">Try adjusting your search or add a new movie to your collection.</p>
         </div>
       )}
     </div>
