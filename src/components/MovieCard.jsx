@@ -23,21 +23,21 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
   };
 
   return (
-    <Card className="overflow-hidden border-slate-200 bg-white text-slate-900 flex flex-col h-full shadow-sm transition-all duration-300 hover:shadow-md">
-      <div className="relative aspect-[2/3] w-full bg-slate-100">
+    <Card className="overflow-hidden border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex flex-row h-40 shadow-sm transition-all duration-300 hover:shadow-md">
+      <div className="relative w-28 shrink-0 bg-slate-100 dark:bg-slate-800 h-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={movie.posterUrl || "https://via.placeholder.com/500x750?text=No+Poster"}
+          src={movie.posterUrl || "https://via.placeholder.com/200x300?text=No+Poster"}
           alt={movie.title}
           className="object-cover w-full h-full"
           onError={(e) => {
-            e.target.src = "https://via.placeholder.com/500x750?text=Image+Not+Found";
+            e.target.src = "https://via.placeholder.com/200x300?text=Not+Found";
           }}
         />
-        <div className="absolute top-2 right-2">
+        <div className="absolute top-1 left-1">
           <Badge
             variant={movie.status === "Completed" ? "default" : "secondary"}
-            className={`cursor-pointer px-2 py-0.5 text-[10px] font-medium border-0 transition-transform hover:scale-105 shadow-sm ${movie.status === "Completed" ? "bg-slate-900 text-white hover:bg-slate-800" : "bg-slate-200 text-slate-700 hover:bg-slate-300"}`}
+            className={`cursor-pointer px-1.5 py-0.5 text-[9px] font-medium border-0 shadow-sm transition-transform hover:scale-105 ${movie.status === "Completed" ? "bg-slate-900 dark:bg-slate-700 text-white" : "bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300"}`}
             onClick={handleStatusToggle}
             title="Click to toggle status"
           >
@@ -45,26 +45,33 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
           </Badge>
         </div>
       </div>
-      <CardContent className="p-4 flex flex-col flex-grow">
-        <h3 className="font-bold text-sm line-clamp-1 mb-1">{movie.title}</h3>
-        <p className="text-xs text-slate-500 mb-4">{movie.genre}</p>
+      <CardContent className="p-3 flex flex-col flex-grow min-w-0">
+        <h3 className="font-bold text-sm line-clamp-1 mb-0.5" title={movie.title}>{movie.title}</h3>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mb-2 truncate">{movie.genre}</p>
         
-        <div className="mt-auto flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star
-                key={star}
-                className={`w-4 h-4 cursor-pointer transition-colors ${
-                  star <= movie.rating ? "fill-slate-900 text-slate-900" : "text-slate-300 hover:text-slate-500"
-                }`}
-                onClick={() => handleRatingChange(star)}
-              />
-            ))}
-          </div>
+        <div className="flex items-center gap-1 mb-auto">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <Star
+              key={star}
+              className={`w-3.5 h-3.5 cursor-pointer transition-colors ${
+                star <= movie.rating ? "fill-slate-900 dark:fill-slate-100 text-slate-900 dark:text-slate-100" : "text-slate-300 dark:text-slate-600 hover:text-slate-500 dark:hover:text-slate-400"
+              }`}
+              onClick={() => handleRatingChange(star)}
+            />
+          ))}
+        </div>
+        
+        <div className="flex gap-2 mt-2 pt-2 border-t border-slate-100 dark:border-slate-800/50">
+          <button
+            onClick={() => onUpdate(movie.id)}
+            className="flex-1 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium py-1 px-2 rounded text-xs transition-colors"
+          >
+            Edit
+          </button>
           <button
             onClick={handleDelete}
             disabled={isDeleting}
-            className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors disabled:opacity-50"
+            className="p-1 text-slate-400 dark:text-slate-500 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors disabled:opacity-50"
             title="Delete Movie"
           >
             <Trash2 className="w-4 h-4" />
