@@ -17,6 +17,11 @@ export default function Navbar() {
 
   useEffect(() => {
     function handleClickOutside(event) {
+      // Do not close dropdowns if clicking inside a modal (Dialog)
+      if (event.target.closest('[role="dialog"]') || event.target.closest('.fixed')) {
+        return;
+      }
+      
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
       }
