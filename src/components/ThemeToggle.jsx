@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   
   // To avoid hydration mismatch, only render after mount
   const [mounted, setMounted] = React.useState(false);
@@ -15,7 +15,7 @@ export function ThemeToggle() {
     return <div className="w-12 h-6 bg-[#9F915A]/20 rounded-full" />; // Skeleton
   }
 
-  const isDark = theme === "dark";
+  const isDark = resolvedTheme === "dark";
 
   return (
     <button
