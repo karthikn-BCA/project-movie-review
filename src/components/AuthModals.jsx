@@ -25,40 +25,40 @@ export function SignInModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="w-full text-sm font-bold bg-[#9F915A] text-white hover:bg-[#9F915A]/90 px-4 py-2 rounded-lg transition-colors shadow-sm flex items-center justify-center gap-2">
+      <DialogTrigger className="w-full text-sm font-bold bg-[#D4AF37] dark:bg-[#E50914] text-white hover:bg-[#D4AF37] dark:bg-[#E50914]/90 px-4 py-2 rounded-lg transition-colors shadow-sm flex items-center justify-center gap-2">
         <LogIn className="w-4 h-4" /> Sign In
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-[#243E36] text-white border-none shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] bg-white dark:bg-zinc-900 text-slate-900 dark:text-white border-none shadow-2xl">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">Welcome Back</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-semibold text-white">Email Address</label>
+            <label className="text-sm font-semibold text-slate-900 dark:text-white">Email Address</label>
             <Input
               type="email"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#9F915A]"
+              className="bg-slate-100 dark:bg-zinc-800 border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#D4AF37] dark:focus-visible:ring-[#E50914]"
               required
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-semibold text-white">Password</label>
+            <label className="text-sm font-semibold text-slate-900 dark:text-white">Password</label>
             <Input
               type="password"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#9F915A]"
+              className="bg-slate-100 dark:bg-zinc-800 border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#D4AF37] dark:focus-visible:ring-[#E50914]"
               required
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 bg-[#9F915A] hover:opacity-90 text-white font-bold py-2.5 rounded-xl disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
+            className="w-full mt-2 bg-[#D4AF37] dark:bg-[#E50914] hover:opacity-90 text-white font-bold py-2.5 rounded-xl disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
@@ -88,44 +88,44 @@ export function SignUpModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="w-full text-sm font-bold bg-[#243E36] text-white hover:bg-[#243E36]/90 px-4 py-2 rounded-lg transition-colors shadow-sm flex items-center justify-center gap-2">
+      <DialogTrigger className="w-full text-sm font-bold bg-white dark:bg-zinc-900 text-slate-900 dark:text-white hover:bg-white dark:bg-zinc-900/90 px-4 py-2 rounded-lg transition-colors shadow-sm flex items-center justify-center gap-2">
         <UserPlus className="w-4 h-4" /> Sign Up
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-[#243E36] text-white border-none shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] bg-white dark:bg-zinc-900 text-slate-900 dark:text-white border-none shadow-2xl">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">Create an Account</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-semibold text-white">Full Name</label>
+            <label className="text-sm font-semibold text-slate-900 dark:text-white">Full Name</label>
             <Input
               type="text"
               placeholder="John Doe"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#9F915A]"
+              className="bg-slate-100 dark:bg-zinc-800 border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#D4AF37] dark:focus-visible:ring-[#E50914]"
               required
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-semibold text-white">Email Address</label>
+            <label className="text-sm font-semibold text-slate-900 dark:text-white">Email Address</label>
             <Input
               type="email"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#9F915A]"
+              className="bg-slate-100 dark:bg-zinc-800 border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#D4AF37] dark:focus-visible:ring-[#E50914]"
               required
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-semibold text-white">Password</label>
+            <label className="text-sm font-semibold text-slate-900 dark:text-white">Password</label>
             <Input
               type="password"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#9F915A]"
+              className="bg-slate-100 dark:bg-zinc-800 border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-[#D4AF37] dark:focus-visible:ring-[#E50914]"
               required
               minLength={6}
             />
@@ -133,7 +133,7 @@ export function SignUpModal() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 bg-[#9F915A] hover:opacity-90 text-white font-bold py-2.5 rounded-xl disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
+            className="w-full mt-2 bg-[#D4AF37] dark:bg-[#E50914] hover:opacity-90 text-white font-bold py-2.5 rounded-xl disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
           >
             {loading ? "Creating account..." : "Sign Up"}
           </button>

@@ -77,7 +77,7 @@ export default function Home() {
           <Input
             type="text"
             placeholder="Search movies by title..."
-            className="pl-9 py-2 bg-[#E0EEC6] border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-slate-900 text-sm shadow-sm transition-colors"
+            className="pl-9 py-2 bg-slate-100 dark:bg-zinc-800 border-none text-slate-900 placeholder:text-slate-500 focus-visible:ring-slate-900 text-sm shadow-sm transition-colors"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -101,12 +101,12 @@ export default function Home() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 bg-[#243E36] rounded-2xl shadow-lg border border-[#243E36]/50">
+        <div className="text-center py-20 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-slate-200 dark:border-zinc-800/50">
           <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30">
              <Search className="w-6 h-6 text-white" />
           </div>
           <p className="text-white text-lg font-bold mb-1">No movies found</p>
-          <p className="text-white/80 text-sm">Try adjusting your search or add a new movie to your collection.</p>
+          <p className="text-slate-500 dark:text-slate-400 text-sm">Try adjusting your search or add a new movie to your collection.</p>
         </div>
       )}
     </div>

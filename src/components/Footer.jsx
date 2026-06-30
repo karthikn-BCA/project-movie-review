@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#243E36] text-white py-4 mt-auto shadow-inner">
+    <footer className="w-full bg-white dark:bg-zinc-900 text-slate-900 dark:text-white py-4 mt-auto shadow-inner">
       <div className="max-w-7xl mx-auto px-4 text-center">
         <p className="text-xs font-medium tracking-wide">© {new Date().getFullYear()} CineTracker. College Project Presentation.</p>
       </div>

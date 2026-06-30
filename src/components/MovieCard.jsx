@@ -24,7 +24,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
   };
 
   return (
-    <Card className="overflow-hidden bg-[#E0EEC6] border-none text-slate-900 flex flex-row h-40 shadow-sm transition-all duration-300 hover:shadow-md relative">
+    <Card className="overflow-hidden bg-slate-100 dark:bg-zinc-800 border-none text-slate-900 flex flex-row h-40 shadow-sm transition-all duration-300 hover:shadow-md relative">
       <div className="relative w-28 shrink-0 bg-white/40 h-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -38,7 +38,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
         <div className="absolute top-1 left-1">
           <Badge
             variant={movie.status === "Completed" ? "default" : "secondary"}
-            className={`cursor-pointer px-1.5 py-0.5 text-[9px] font-medium border-0 shadow-sm transition-transform hover:scale-105 ${movie.status === "Completed" ? "bg-[#9F915A] text-white" : "bg-white/80 text-slate-800"}`}
+            className={`cursor-pointer px-1.5 py-0.5 text-[9px] font-medium border-0 shadow-sm transition-transform hover:scale-105 ${movie.status === "Completed" ? "bg-[#D4AF37] dark:bg-[#E50914] text-white" : "bg-white/80 text-slate-800"}`}
             onClick={handleStatusToggle}
           >
             {movie.status}
@@ -54,7 +54,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
             <Star
               key={star}
               className={`w-3.5 h-3.5 cursor-pointer transition-colors ${
-                star <= movie.rating ? "fill-[#9F915A] text-[#9F915A]" : "text-slate-800/20 hover:text-[#9F915A]/50"
+                star <= movie.rating ? "fill-[#9F915A] text-[#D4AF37] dark:text-[#E50914]" : "text-slate-800/20 hover:text-[#D4AF37] dark:text-[#E50914]/50"
               }`}
               onClick={() => handleRatingChange(star)}
             />
@@ -70,7 +70,7 @@ export default function MovieCard({ movie, onUpdate, onDelete }) {
           <button
             onClick={handleDelete}
             disabled={isDeleting}
-            className="p-1 text-slate-800/50 hover:text-[#9F915A] hover:bg-white/50 rounded transition-colors disabled:opacity-50"
+            className="p-1 text-slate-800/50 hover:text-[#D4AF37] dark:text-[#E50914] hover:bg-white/50 rounded transition-colors disabled:opacity-50"
           >
             <Trash2 className="w-4 h-4" />
           </button>

@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className="font-sans antialiased bg-[#F1F7ED] dark:bg-slate-800 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors"
+        className="font-sans antialiased bg-slate-50 dark:bg-zinc-950 dark:bg-slate-800 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors"
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AuthProvider>

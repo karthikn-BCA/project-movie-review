@@ -35,14 +35,14 @@ export default function SettingsPage() {
   if (!user) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
-        <Shield className="w-16 h-16 text-[#9F915A] mb-4 opacity-50" />
+        <Shield className="w-16 h-16 text-[#D4AF37] dark:text-[#E50914] mb-4 opacity-50" />
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Access Denied</h2>
         <p className="text-slate-600 dark:text-slate-400 mt-2 max-w-sm">
           You must be logged in to view and edit your profile settings.
         </p>
         <button 
           onClick={() => router.push("/")}
-          className="mt-6 px-6 py-2 bg-[#9F915A] text-white rounded-full font-medium hover:opacity-90 transition-opacity"
+          className="mt-6 px-6 py-2 bg-[#D4AF37] dark:bg-[#E50914] text-white rounded-full font-medium hover:opacity-90 transition-opacity"
         >
           Return Home
         </button>
@@ -82,7 +82,7 @@ export default function SettingsPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Sidebar Nav (Visual only for mock) */}
         <div className="flex flex-col gap-2">
-          <button className="flex items-center gap-3 px-4 py-2.5 bg-[#E0EEC6] dark:bg-[#E0EEC6]/10 text-slate-900 dark:text-white font-bold rounded-lg transition-colors">
+          <button className="flex items-center gap-3 px-4 py-2.5 bg-slate-100 dark:bg-zinc-800 dark:bg-slate-100 dark:bg-zinc-800/10 text-slate-900 dark:text-white font-bold rounded-lg transition-colors">
             <User className="w-4 h-4" /> Profile
           </button>
           <button className="flex items-center gap-3 px-4 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800 font-medium rounded-lg transition-colors cursor-not-allowed opacity-60">
@@ -111,7 +111,7 @@ export default function SettingsPage() {
                     <img 
                       src={formData.avatar} 
                       alt="Avatar" 
-                      className="w-24 h-24 rounded-full border-4 border-[#9F915A]/20 bg-[#E0EEC6] object-cover transition-transform group-hover:scale-105"
+                      className="w-24 h-24 rounded-full border-4 border-[#D4AF37] dark:border-[#E50914]/20 bg-slate-100 dark:bg-zinc-800 object-cover transition-transform group-hover:scale-105"
                       onError={(e) => { e.target.src = "https://via.placeholder.com/150?text=Avatar"; }}
                     />
                     <div className="absolute inset-0 bg-black/40 text-white rounded-full flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
@@ -125,7 +125,7 @@ export default function SettingsPage() {
                       name="avatar"
                       value={formData.avatar}
                       onChange={handleChange}
-                      className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 focus-visible:ring-[#9F915A]"
+                      className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 focus-visible:ring-[#D4AF37] dark:focus-visible:ring-[#E50914]"
                       placeholder="https://..."
                     />
                     <p className="text-xs text-slate-500 mt-1.5">Provide a link to an image to update your avatar.</p>
@@ -142,7 +142,7 @@ export default function SettingsPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 focus-visible:ring-[#9F915A]"
+                      className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 focus-visible:ring-[#D4AF37] dark:focus-visible:ring-[#E50914]"
                       required
                     />
                   </div>
@@ -153,7 +153,7 @@ export default function SettingsPage() {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 focus-visible:ring-[#9F915A]"
+                      className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 focus-visible:ring-[#D4AF37] dark:focus-visible:ring-[#E50914]"
                       required
                     />
                   </div>
@@ -164,7 +164,7 @@ export default function SettingsPage() {
                   <button 
                     type="submit"
                     disabled={loading}
-                    className="flex items-center gap-2 bg-[#9F915A] hover:opacity-90 text-white font-bold py-2.5 px-6 rounded-xl disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
+                    className="flex items-center gap-2 bg-[#D4AF37] dark:bg-[#E50914] hover:opacity-90 text-white font-bold py-2.5 px-6 rounded-xl disabled:opacity-50 transition-all shadow-md active:scale-[0.98]"
                   >
                     {loading ? "Saving..." : <><Save className="w-4 h-4" /> Save Changes</>}
                   </button>
