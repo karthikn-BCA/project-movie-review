@@ -12,13 +12,15 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   // READ: Fetch the list of movies
-  const fetchMovies = async () => {
+  const fetchMovies = () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/movies", { cache: "no-store" });
-      if (!res.ok) throw new Error("Failed to fetch");
-      const data = await res.json();
-      setMovies(data);
+      const storedMovies = localStorage.getItem("movies");
+      if (storedMovies) {
+        setMovies(JSON.parse(storedMovies));
+      } else {
+        setMovies([]);
+      }
     } catch (err) {
       console.error(err);
     } finally {
@@ -27,58 +29,37 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line
     fetchMovies();
   }, []);
 
+  // Helper to save movies to local storage
+  const saveMovies = (updatedMovies) => {
+    setMovies(updatedMovies);
+    localStorage.setItem("movies", JSON.stringify(updatedMovies));
+  };
+
   // CREATE: Add a new movie
   const handleAddMovie = async (newMovie) => {
-    try {
-      const res = await fetch("/api/movies", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newMovie),
-      });
-      if (res.ok) {
-        fetchMovies(); // Re-fetch to get the new list with DB-generated IDs
-      }
-    } catch (err) {
-      console.error("Failed to add movie:", err);
-    }
+    const movieWithId = {
+      ...newMovie,
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+    };
+    saveMovies([...movies, movieWithId]);
   };
 
   // UPDATE: Change status or rating
   const handleUpdateMovie = async (id, updateData) => {
-    // Optimistic UI update
-    setMovies((prev) =>
-      prev.map((movie) => (movie.id === id ? { ...movie, ...updateData } : movie))
+    const updatedMovies = movies.map((movie) =>
+      movie.id === id ? { ...movie, ...updateData } : movie
     );
-    
-    try {
-      await fetch(`/api/movies/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updateData),
-      });
-    } catch (err) {
-      console.error("Failed to update movie:", err);
-      fetchMovies(); // Revert on failure
-    }
+    saveMovies(updatedMovies);
   };
 
   // DELETE: Remove movie
   const handleDeleteMovie = async (id) => {
-    // Optimistic UI update
-    setMovies((prev) => prev.filter((movie) => movie.id !== id));
-    
-    try {
-      await fetch(`/api/movies/${id}`, {
-        method: "DELETE",
-      });
-    } catch (err) {
-      console.error("Failed to delete movie:", err);
-      fetchMovies(); // Revert on failure
-    }
+    const updatedMovies = movies.filter((movie) => movie.id !== id);
+    saveMovies(updatedMovies);
   };
 
   // Filter movies based on search query
