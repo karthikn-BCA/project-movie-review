@@ -25,7 +25,7 @@ export function SignInModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="text-sm font-medium text-white/90 hover:text-white transition-colors flex items-center gap-1">
+      <DialogTrigger className="w-full text-sm font-bold bg-[#9F915A] text-white hover:bg-[#9F915A]/90 px-4 py-2 rounded-lg transition-colors shadow-sm flex items-center justify-center gap-2">
         <LogIn className="w-4 h-4" /> Sign In
       </DialogTrigger>
       <DialogContent className="sm:max-w-[400px] bg-[#243E36] text-white border-none shadow-2xl">
@@ -88,7 +88,7 @@ export function SignUpModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="text-sm font-bold bg-white text-[#243E36] hover:bg-gray-100 px-4 py-1.5 rounded-full transition-colors shadow-sm flex items-center gap-1">
+      <DialogTrigger className="w-full text-sm font-bold bg-[#243E36] text-white hover:bg-[#243E36]/90 px-4 py-2 rounded-lg transition-colors shadow-sm flex items-center justify-center gap-2">
         <UserPlus className="w-4 h-4" /> Sign Up
       </DialogTrigger>
       <DialogContent className="sm:max-w-[400px] bg-[#243E36] text-white border-none shadow-2xl">

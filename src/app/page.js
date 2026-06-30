@@ -3,38 +3,15 @@
 import { useState, useEffect } from "react";
 import MovieCard from "@/components/MovieCard";
 import MovieModal from "@/components/MovieModal";
-import { Search, Film } from "lucide-react";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/components/AuthProvider";
-import { SignInModal, SignUpModal } from "@/components/AuthModals";
 
 export default function Home() {
   const { user } = useAuth();
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
-
-  // If there's no logged-in user, show the landing screen
-  if (user === null) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[70vh] text-center px-4 animate-in fade-in zoom-in duration-500">
-        <div className="bg-[#9F915A] p-4 rounded-2xl mb-6 shadow-lg shadow-[#9F915A]/20">
-          <Film className="w-16 h-16 text-white" />
-        </div>
-        <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
-          Welcome to CineTracker
-        </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-lg mb-8">
-          Your personal movie universe. Sign in to start organizing, tracking, and rating your favorite films.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center gap-4 bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800">
-          <SignInModal />
-          <span className="text-sm text-slate-400 font-medium">or</span>
-          <SignUpModal />
-        </div>
-      </div>
-    );
-  }
 
   // READ: Fetch the list of movies
   const fetchMovies = () => {
